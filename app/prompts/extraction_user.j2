@@ -1,0 +1,33 @@
+---
+description: User prompt template for data extraction with schema definition
+author: AI Market Analyst Team
+variables:
+  - context
+---
+Extract the following information from the market research report and return it as valid JSON.
+
+Market Research Report:
+{{ context }}
+
+Extract the following fields:
+{
+  "company_name": "string",
+  "product_name": "string",
+  "market_share_percent": "number",
+  "market_size_billions": "number",
+  "projected_market_size_billions": "number",
+  "cagr_percent": "number",
+  "competitors": [
+    {
+      "name": "string",
+      "market_share_percent": "number"
+    }
+  ],
+  "strengths": ["string"],
+  "weaknesses": ["string"],
+  "opportunities": ["string"],
+  "threats": ["string"]
+}
+
+Return only the JSON object, no additional text.
+
