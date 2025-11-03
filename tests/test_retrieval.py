@@ -1,7 +1,13 @@
-from dotenv import load_dotenv
-from services.retrieval import RetrievalService
+import sys
+from pathlib import Path
 
-load_dotenv()
+sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
+
+from dotenv import load_dotenv
+from app.services.retrieval import RetrievalService
+
+env_path = Path(__file__).parent.parent / ".env"
+load_dotenv(env_path)
 
 
 def test_retrieval():

@@ -1,6 +1,10 @@
-from dotenv import load_dotenv
+import sys
 from pathlib import Path
-from workflows.qa_workflow import QAWorkflow
+
+sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
+
+from dotenv import load_dotenv
+from app.workflows.qa_workflow import QAWorkflow
 
 env_path = Path(__file__).parent.parent / ".env"
 load_dotenv(env_path)
