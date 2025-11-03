@@ -1,4 +1,5 @@
 from typing import List, Dict, Any
+from psycopg2.extras import Json
 from database.connection import get_connection
 
 
@@ -19,7 +20,7 @@ class DocumentRepository:
             VALUES (%s, %s, %s, %s)
             RETURNING id;
         """,
-            (content, embedding, chunk_index, metadata),
+            (content, embedding, chunk_index, Json(metadata)),
         )
 
         chunk_id = cur.fetchone()["id"]
