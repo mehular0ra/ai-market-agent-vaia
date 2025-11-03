@@ -1,8 +1,8 @@
 import os
 import json
 from openai import OpenAI
-from database.repository import DocumentRepository
-from services.prompt_manager import PromptManager
+from app.database.repository import DocumentRepository
+from app.services.prompt_manager import PromptManager
 
 
 class ExtractionWorkflow:
@@ -52,4 +52,3 @@ class ExtractionWorkflow:
             "chunks_used": len(chunks),
             "model": self.model,
         }
-

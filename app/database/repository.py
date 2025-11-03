@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 from psycopg2.extras import Json
 import numpy as np
-from database.connection import get_connection
+from .connection import get_connection
 
 
 class DocumentRepository:

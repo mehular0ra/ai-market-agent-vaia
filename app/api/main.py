@@ -1,9 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from workflows.qa_workflow import QAWorkflow
-from workflows.summarization_workflow import SummarizationWorkflow
-from workflows.extraction_workflow import ExtractionWorkflow
-from services.router import QueryRouter
+from app.workflows.qa_workflow import QAWorkflow
+from app.workflows.summarization_workflow import SummarizationWorkflow
+from app.workflows.extraction_workflow import ExtractionWorkflow
+from app.services.router import QueryRouter
 
 app = FastAPI(
     title="AI Market Analyst API",

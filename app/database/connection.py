@@ -1,7 +1,7 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from pgvector.psycopg2 import register_vector
-from database.config import DatabaseConfig
+from .config import DatabaseConfig
 
 
 def get_connection():

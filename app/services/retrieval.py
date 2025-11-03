@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
-from services.embedding import EmbeddingService
-from database.repository import DocumentRepository
+from .embedding import EmbeddingService
+from app.database.repository import DocumentRepository
 
 
 class RetrievalService:

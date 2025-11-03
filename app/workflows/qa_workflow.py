@@ -1,7 +1,7 @@
 import os
 from openai import OpenAI
-from services.retrieval import RetrievalService
-from services.prompt_manager import PromptManager
+from app.services.retrieval import RetrievalService
+from app.services.prompt_manager import PromptManager
 
 
 class QAWorkflow:

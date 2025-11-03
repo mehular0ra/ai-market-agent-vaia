@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-from services.chunking import ChunkingService
-from services.embedding import EmbeddingService
-from database.repository import DocumentRepository
+from app.services.chunking import ChunkingService
+from app.services.embedding import EmbeddingService
+from app.database.repository import DocumentRepository
 
 load_dotenv()
 
