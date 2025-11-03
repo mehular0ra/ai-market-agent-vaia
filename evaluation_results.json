@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-11-03 21:19:06",
+  "benchmarks": {
+    "embedding_models": [
+      {
+        "model": "text-embedding-3-small",
+        "queries_tested": 5,
+        "total_time_seconds": 5.942,
+        "avg_time_per_query_seconds": 1.188,
+        "embedding_dimensions": 1536
+      },
+      {
+        "model": "text-embedding-3-large",
+        "queries_tested": 5,
+        "total_time_seconds": 4.591,
+        "avg_time_per_query_seconds": 0.918,
+        "embedding_dimensions": 3072
+      }
+    ],
+    "chunking_strategies": [
+      {
+        "chunk_size": 250,
+        "chunk_overlap": 50,
+        "num_chunks": 2,
+        "total_characters": 1846,
+        "avg_chunk_characters": 923.0,
+        "processing_time_seconds": 0.008
+      },
+      {
+        "chunk_size": 500,
+        "chunk_overlap": 100,
+        "num_chunks": 1,
+        "total_characters": 1611,
+        "avg_chunk_characters": 1611.0,
+        "processing_time_seconds": 0.0
+      },
+      {
+        "chunk_size": 150,
+        "chunk_overlap": 30,
+        "num_chunks": 3,
+        "total_characters": 1923,
+        "avg_chunk_characters": 641.0,
+        "processing_time_seconds": 0.0
+      }
+    ],
+    "topk_retrieval": {
+      "top_1": {
+        "k": 1,
+        "chunks_retrieved": 1,
+        "avg_similarity": 0.5934,
+        "retrieval_time_seconds": 0.32
+      },
+      "top_3": {
+        "k": 3,
+        "chunks_retrieved": 2,
+        "avg_similarity": 0.5602,
+        "retrieval_time_seconds": 0.03
+      },
+      "top_5": {
+        "k": 5,
+        "chunks_retrieved": 2,
+        "avg_similarity": 0.5602,
+        "retrieval_time_seconds": 0.035
+      },
+      "top_10": {
+        "k": 10,
+        "chunks_retrieved": 2,
+        "avg_similarity": 0.5602,
+        "retrieval_time_seconds": 0.17
+      }
+    }
+  }
+}
