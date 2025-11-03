@@ -3,9 +3,9 @@ from openai import OpenAI
 
 
 class EmbeddingService:
-    def __init__(self):
+    def __init__(self, model: str = None):
         self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        self.model = os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
+        self.model = model or os.getenv("EMBEDDING_MODEL", "text-embedding-3-small")
 
     def generate_embedding(self, text: str) -> list[float]:
         response = self.client.embeddings.create(model=self.model, input=text)
