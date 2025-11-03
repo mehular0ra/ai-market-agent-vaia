@@ -1,6 +1,7 @@
 import os
 from openai import OpenAI
 from services.retrieval import RetrievalService
+from services.prompt_manager import PromptManager
 
 
 class QAWorkflow:
@@ -19,17 +20,10 @@ class QAWorkflow:
                 "context_used": False,
             }
 
-        system_prompt = """You are a helpful AI assistant analyzing market research data.
-Answer questions based ONLY on the provided context.
-If the context doesn't contain the answer, say so clearly.
-Be concise and specific."""
-
-        user_prompt = f"""Context:
-{context}
-
-Question: {question}
-
-Answer:"""
+        system_prompt = PromptManager.get_prompt("qa_system")
+        user_prompt = PromptManager.get_prompt(
+            "qa_user", context=context, question=question
+        )
 
         response = self.client.chat.completions.create(
             model=self.model,
