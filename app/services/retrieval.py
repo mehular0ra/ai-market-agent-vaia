@@ -12,11 +12,9 @@ class RetrievalService:
         self, query: str, top_k: int = 3
     ) -> List[Dict[str, Any]]:
         query_embedding = self.embedder.generate_embedding(query)
-
         results = self.repo.search_similar_chunks(
             query_embedding=query_embedding, limit=top_k
         )
-
         return results
 
     def get_context_for_query(self, query: str, top_k: int = 3) -> str:

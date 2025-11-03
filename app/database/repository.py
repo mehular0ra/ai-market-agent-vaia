@@ -1,5 +1,6 @@
 from typing import List, Dict, Any
 from psycopg2.extras import Json
+import numpy as np
 from database.connection import get_connection
 
 
@@ -36,15 +37,17 @@ class DocumentRepository:
         conn = get_connection()
         cur = conn.cursor()
 
+        query_vec = np.array(query_embedding)
+
         cur.execute(
             """
             SELECT id, content, chunk_index, metadata,
-                   1 - (embedding <=> %s::vector) as similarity
+                   1 - (embedding <=> %s) as similarity
             FROM document_chunks
-            ORDER BY embedding <=> %s::vector
+            ORDER BY similarity DESC
             LIMIT %s;
         """,
-            (query_embedding, query_embedding, limit),
+            (query_vec, limit),
         )
 
         results = cur.fetchall()
