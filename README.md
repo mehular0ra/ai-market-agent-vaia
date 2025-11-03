@@ -2,15 +2,23 @@
 
 Multi-functional AI agent for market research analysis using RAG (Retrieval-Augmented Generation). Built for the VAIA Agentic AI Residency Program.
 
-**🎯 Bonus Feature Implemented**: Autonomous Query Routing (Bonus 1) with 100% accuracy ✅
-
 ## Features
 
+### Core Workflows
 - **Q&A Workflow**: Answer specific questions about market research documents
 - **Summarization Workflow**: Generate executive summaries of market research reports
 - **Data Extraction Workflow**: Extract structured JSON data from documents
-- **Intelligent Query Router**: Automatically routes queries to the appropriate workflow (Bonus 1 ✅)
+
+### Extras
+- ✅ **1**: Intelligent Query Router - Automatically routes queries to the appropriate workflow (100% accuracy)
+- ✅ **2**: Comparative Evaluation - Benchmarked embedding models, chunking strategies, and retrieval parameters (see `docs/EVALUATION.md`)
+- ✅ **3**: Containerization - Docker and docker-compose for easy deployment (see `docker/` directory)
+- ✅ **4**: Gradio Web UI - Interactive web interface for all workflows
+
+### Infrastructure
 - **RESTful API**: FastAPI-based API with 6 endpoints
+- **Vector Database**: PostgreSQL with pgvector for efficient similarity search
+- **Prompt Management**: Jinja2 templates with YAML frontmatter
 
 ## Tech Stack
 
@@ -203,7 +211,51 @@ uv run python process_document.py
 
 ## Usage
 
-### Start the API Server
+### Option 1: Gradio Web UI 
+Interactive web interface for all workflows:
+
+```bash
+uv run python app/ui/gradio_app.py
+```
+
+Access at: `http://localhost:7860`
+
+**Features:**
+- 🔀 **Auto-Route Tab**: Intelligent query routing (Bonus 1)
+- 💬 **Q&A Tab**: Ask questions with adjustable top-k
+- 📊 **Summarization Tab**: Generate executive summaries
+- 📋 **Extraction Tab**: Extract structured JSON data
+- ℹ️ **About Tab**: Architecture and tech stack info
+
+### Docker Setup
+
+Run the application using Docker:
+
+```bash
+cd docker
+./docker-setup.sh
+```
+
+This script will:
+1. Check for required environment variables
+2. Build Docker images
+3. Start PostgreSQL + API services
+4. Initialize the database
+5. Process the sample document
+
+**Access the application:**
+- API: `http://localhost:8000`
+- API Docs: `http://localhost:8000/docs`
+
+**Manual Docker commands:**
+```bash
+cd docker
+docker-compose up -d
+docker-compose exec api uv run python app/init_db.py
+docker-compose exec api uv run python app/process_document.py
+```
+
+### Option 3: API Server (Local)
 
 ```bash
 uv run python run_api.py
@@ -384,9 +436,36 @@ variables:
 ---
 ```
 
+## Evaluation & Benchmarking
+
+### Comparative Evaluation (Bonus 2)
+
+Comprehensive benchmarking results are available in:
+- **`docs/EVALUATION.md`**: Detailed analysis and recommendations
+- **`evaluation_results.json`**: Raw benchmark data
+
+**What was evaluated:**
+1. **Embedding Models**: text-embedding-3-small vs. text-embedding-3-large
+2. **Chunking Strategies**: 150, 250, and 500 tokens with varying overlap
+3. **Retrieval Top-K**: k=1, 3, 5, 10
+
+**Key Findings:**
+- text-embedding-3-small is optimal (6.5x cheaper, sufficient quality)
+- 250 tokens with 50 overlap provides best balance
+- top-k=3 is optimal for retrieval (fastest, sufficient context)
+
+**Run the benchmark:**
+```bash
+uv run python app/evaluation/benchmark.py
+```
+
+See `docs/EVALUATION.md` for detailed analysis, cost comparisons, and recommendations.
+
+---
+
 ## Dependencies
 
-Core dependencies (11 total):
+Core dependencies (13 total):
 - `fastapi>=0.121.0` - Web framework
 - `uvicorn>=0.35.0` - ASGI server
 - `openai>=2.6.1` - OpenAI API client
@@ -398,6 +477,7 @@ Core dependencies (11 total):
 - `numpy>=2.2.0` - Numerical operations
 - `jinja2>=3.1.6` - Template engine
 - `python-frontmatter>=1.1.0` - YAML frontmatter parsing
+- `gradio>=5.0.0` - Web UI framework (Bonus 4)
 
 ## Development
 
