@@ -1,10 +1,10 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from dotenv import load_dotenv
-from workflows.summarization_workflow import SummarizationWorkflow
+from app.workflows.summarization_workflow import SummarizationWorkflow
 
 env_path = Path(__file__).parent.parent / ".env"
 load_dotenv(env_path)

@@ -2,10 +2,10 @@ import sys
 from pathlib import Path
 import json
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from dotenv import load_dotenv
-from workflows.extraction_workflow import ExtractionWorkflow
+from app.workflows.extraction_workflow import ExtractionWorkflow
 
 env_path = Path(__file__).parent.parent / ".env"
 load_dotenv(env_path)
