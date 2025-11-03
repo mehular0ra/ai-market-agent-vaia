@@ -1,3 +1,4 @@
 notes.txt
 .env
-*cpython*.so
+**/__pycache__/
+*.py[cod]
