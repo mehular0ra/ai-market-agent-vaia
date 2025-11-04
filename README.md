@@ -10,10 +10,10 @@ Multi-functional AI agent for market research analysis using RAG (Retrieval-Augm
 - **Data Extraction Workflow**: Extract structured JSON data from documents
 
 ### Extras
-- ✅ **1**: Intelligent Query Router - Automatically routes queries to the appropriate workflow (100% accuracy)
-- ✅ **2**: Comparative Evaluation - Benchmarked embedding models, chunking strategies, and retrieval parameters (see `docs/EVALUATION.md`)
-- ✅ **3**: Containerization - Docker and docker-compose for easy deployment (see `docker/` directory)
-- ✅ **4**: Gradio Web UI - Interactive web interface for all workflows
+- **1**: Intelligent Query Router - Automatically routes queries to the appropriate workflow (100% accuracy)
+- **2**: Comparative Evaluation - Benchmarked embedding models, chunking strategies, and retrieval parameters (see `docs/EVALUATION.md`)
+- **3**: Containerization - Docker and docker-compose for easy deployment (see `docker/` directory)
+- **4**: Gradio Web UI - Interactive web interface for all workflows
 
 ### Infrastructure
 - **RESTful API**: FastAPI-based API with 6 endpoints

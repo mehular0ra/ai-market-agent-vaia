@@ -15,9 +15,9 @@ This document presents a comprehensive comparative evaluation of different confi
 3. **Retrieval Top-K Values**: k=1, 3, 5, 10
 
 **Key Findings:**
-- ✅ **text-embedding-3-small** is the optimal choice (cost-effective, sufficient quality)
-- ✅ **250 tokens with 50 overlap** provides best balance for our use case
-- ✅ **top-k=3** is optimal for retrieval (balances context and relevance)
+- **text-embedding-3-small** is the optimal choice (cost-effective, sufficient quality)
+- **250 tokens with 50 overlap** provides best balance for our use case
+- **top-k=3** is optimal for retrieval (balances context and relevance)
 
 ---
 
@@ -55,7 +55,7 @@ This document presents a comprehensive comparative evaluation of different confi
 
 ### Recommendation
 
-**✅ Use `text-embedding-3-small`**
+**Use `text-embedding-3-small`**
 
 **Rationale:**
 1. **Cost-Effective**: 6.5x cheaper than large model
@@ -112,7 +112,7 @@ This document presents a comprehensive comparative evaluation of different confi
 
 ### Recommendation
 
-**✅ Use 250 tokens with 50 overlap (current configuration)**
+**Use 250 tokens with 50 overlap (current configuration)**
 
 **Rationale:**
 1. **Optimal Granularity**: 2 chunks for our document size
@@ -158,7 +158,7 @@ This document presents a comprehensive comparative evaluation of different confi
 
 ### Recommendation
 
-**✅ Use top-k=3 (current configuration)**
+**Use top-k=3 (current configuration)**
 
 **Rationale:**
 1. **Fastest Retrieval**: 0.030s (10x faster than k=1)
