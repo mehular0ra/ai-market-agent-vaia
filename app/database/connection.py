@@ -13,10 +13,15 @@ def get_connection():
 
 
 def init_database():
-    conn = get_connection()
+    conn = psycopg2.connect(
+        DatabaseConfig.get_connection_string(), cursor_factory=RealDictCursor
+    )
     cur = conn.cursor()
 
     cur.execute("CREATE EXTENSION IF NOT EXISTS vector;")
+    conn.commit()
+
+    register_vector(conn)
 
     cur.execute("""
         CREATE TABLE IF NOT EXISTS document_chunks (
